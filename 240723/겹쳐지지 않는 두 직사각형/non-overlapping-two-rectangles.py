@@ -19,6 +19,8 @@ def pick_pos(n, m, ay, ax, by, bx, arr):
                         continue            
                     v1 = rectangle(ay, ax, i, j, arr)
                     v2 = rectangle(by, bx, k, l, arr)
+                    # print("A", ay, ax, i, j, v1)
+                    # print("B", by, bx, k, l, v2)
                     value = max(value, v1 + v2)
     return value
 
@@ -29,9 +31,11 @@ def main():
         arr.append(list(map(int, input().split())))
     result = float("-inf")
     for i in range(n):
-        for j in range(m - 1):
-            for k in range(i, n):
-                for l in range(j + 1, m):
+        for j in range(m):
+            for k in range(n):
+                for l in range(m):
+                    if i == k and j == l:
+                        continue
                     # print(i, j, k, l)
                     sum = pick_pos(n, m, i, j, k, l, arr)
                     result = max(result, sum)
