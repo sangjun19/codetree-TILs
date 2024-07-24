@@ -1,8 +1,9 @@
 def calc(arr, i, iv, j, jv):
     sum = 0
+    # print(i, iv, j, jv)
     for y in range(i, i + iv + 1):
         for x in range(j, j + jv + 1):
-            if arr[y][x] >= 0:
+            if arr[y][x] > 0:
                 sum += 1
             else: 
                 return -1
@@ -26,6 +27,8 @@ def main():
         arr.append(list(map(int, input().split())))
     for i in range(n):
         for j in range(m):
+            if arr[i][j] < 0:
+                continue
             result = max(result, find_rect(arr, i, j))
     print(result)
     
