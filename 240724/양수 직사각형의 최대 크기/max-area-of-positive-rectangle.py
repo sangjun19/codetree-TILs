@@ -10,7 +10,7 @@ def calc(arr, i, iv, j, jv):
     return sum
 
 def find_rect(arr, i, j):
-    result = float("-inf")
+    result = -1
     for y in range(len(arr)):
         for x in range(len(arr[0])):
             if i + y >= len(arr) or j + x >= len(arr[0]):
@@ -22,7 +22,7 @@ def find_rect(arr, i, j):
 def main():
     n, m = map(int, input().split())
     arr = []
-    result = float("-inf")
+    result = -1
     for _ in range(n):
         arr.append(list(map(int, input().split())))
     for i in range(n):
