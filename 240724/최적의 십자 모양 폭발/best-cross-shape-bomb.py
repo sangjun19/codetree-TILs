@@ -16,13 +16,16 @@ def calc_pair(arr):
     return cnt
 
 # 폭탄이 터진 후 내리기
-def result_bomb(arr):
-    for i in range(len(arr) - 1, 0, -1):
-        for j in range(len(arr)):
-            if arr[i][j] != 0:
-                continue
-            arr[i][j] = arr[i - 1][j]
-            arr[i - 1][j] = 0
+def result_bomb(arr):    
+    for j in range(len(arr)):
+        save = -1
+        for i in range(len(arr) - 1, -1, -1):
+            if save == -1 and arr[i][j] == 0:
+                save = i
+            if arr[i][j] != 0 and save != -1:
+                arr[save][j] = arr[i][j]
+                arr[i][j] = 0
+                save -= 1    
     return calc_pair(arr)
 
 # 폭탄 터뜨리기
@@ -62,9 +65,9 @@ def main():
     n = int(input())
     arr = []
     for _ in range(n):
-        arr.append(list(map(int, input().split())))
+        arr.append(list(map(int, input().split())))    
     result = choose_bomb(arr[:])
-    print(result)    
+    print(result)
     
 if __name__ == "__main__":
     main()
