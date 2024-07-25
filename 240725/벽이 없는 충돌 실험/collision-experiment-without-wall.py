@@ -65,11 +65,12 @@ def move_marble(marbleList):
     
 def main():
     global is_end, time_count, is_conflicted
+    global x_min, x_max, y_min, y_max
     testCase = int(input())
     marble_case = []
     for _ in range(testCase):
-        x_min, y_min = float("-inf")
-        x_max, y_max = float("inf")
+        x_min, y_min = float("inf"), float("inf")
+        x_max, y_max = float("-inf"), float("-inf")
         marbleNum = int(input())
         marbleList = []
         for _ in range(marbleNum):
@@ -82,10 +83,10 @@ def main():
                 d = 1
             elif marbleObj[3] == 'R':
                 d = 3
-            x_min = max(x_min, int(marbleObj[0]))
-            x_max = min(x_max, int(marbleObj[0]))
-            y_min = max(y_min, int(marbleObj[1]))
-            y_max = min(y_max, int(marbleObj[1]))
+            x_min = min(x_min, int(marbleObj[0]))
+            x_max = max(x_max, int(marbleObj[0]))
+            y_min = min(y_min, int(marbleObj[1]))
+            y_max = max(y_max, int(marbleObj[1]))
             marbleList.append(Marble(int(marbleObj[0]), int(marbleObj[1]), int(marbleObj[2]), d))
         marble_case.append(marbleList)
         
