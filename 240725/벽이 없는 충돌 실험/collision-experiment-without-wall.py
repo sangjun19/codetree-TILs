@@ -2,6 +2,10 @@ is_end = False
 is_conflicted = False
 time_count = 0
 save_time = 0
+x_min = 0
+x_max = 0
+y_min = 0
+y_max = 0
 
 class Marble:
     def __init__(self, x, y, weight, dir):
@@ -12,11 +16,12 @@ class Marble:
 
 def is_conflict(marbleList):
     global is_conflicted, time_count, is_end, save_time
+    global x_min, x_max, y_min, y_max
     new_marbleList = []
     out_count = 0
     flag = is_conflicted
     for i in range(len(marbleList)):
-        if marbleList[i].x < -2 or marbleList[i].x > 2 or marbleList[i].y < -2 or marbleList[i].y > 2:
+        if marbleList[i].x < x_min or marbleList[i].x > x_max or marbleList[i].y < y_min or marbleList[i].y > y_max:
             out_count += 1
             continue
         for j in range(len(marbleList)):
@@ -63,6 +68,8 @@ def main():
     testCase = int(input())
     marble_case = []
     for _ in range(testCase):
+        x_min, y_min = float("-inf")
+        x_max, y_max = float("inf")
         marbleNum = int(input())
         marbleList = []
         for _ in range(marbleNum):
@@ -75,6 +82,10 @@ def main():
                 d = 1
             elif marbleObj[3] == 'R':
                 d = 3
+            x_min = max(x_min, int(marbleObj[0]))
+            x_max = min(x_max, int(marbleObj[0]))
+            y_min = max(y_min, int(marbleObj[1]))
+            y_max = min(y_max, int(marbleObj[1]))
             marbleList.append(Marble(int(marbleObj[0]), int(marbleObj[1]), int(marbleObj[2]), d))
         marble_case.append(marbleList)
         
