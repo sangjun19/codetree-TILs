@@ -24,25 +24,28 @@ def is_conflict(marbleList, minmaxList):
     out_count = 0
     flag = is_conflicted
     for i in range(len(marbleList)):
-        if marbleList[i].x < minmaxList[i].min_x or marbleList[i].x > minmaxList[i].max_x or marbleList[i].y < minmaxList[i].min_y or marbleList[i].y > minmaxList[i].max_y:
-            out_count += 1
+        if marbleList[i].x < minmaxList.min_x or marbleList[i].x > minmaxList.max_x or marbleList[i].y < minmaxList.min_y or marbleList[i].y > minmaxList.max_y:
+            out_count += 1            
             continue
+        
         for j in range(len(marbleList)):
             if i == j: continue
-            
+            # print(marbleList[i].x, marbleList[i].y, marbleList[j].x, marbleList[j].y)
             if marbleList[i].x == marbleList[j].x and marbleList[i].y == marbleList[j].y:
+                # print(i, j)
+                # print(marbleList[i].x, marbleList[i].y, marbleList[j].x, marbleList[j].y)
                 flag = True
                 save_time = time_count
                 if marbleList[i].weight > marbleList[j].weight or (marbleList[i].weight == marbleList[j].weight and i > j):
-                    marbleList[j].weight = -1
+                    marbleList[j].weight = 0
                 else:
-                    marbleList[i].weight = -1
-
+                    marbleList[i].weight = 0
+    
     is_conflicted = flag
     if out_count == len(marbleList):
         is_end = True
     for marble in marbleList:
-        if marble.weight != -1:
+        if marble.weight != 0:
             new_marbleList.append(marble)
     return new_marbleList
 
@@ -92,9 +95,8 @@ def main():
             x_max = max(x_max, int(marbleObj[0]))
             y_min = min(y_min, int(marbleObj[1]))
             y_max = max(y_max, int(marbleObj[1]))
-            minmaxList.append(MinMax(x_min, x_max, y_min, y_max))
-            marbleList.append(Marble(int(marbleObj[0]), int(marbleObj[1]), int(marbleObj[2]), d))
-        minmax_case.append(minmaxList)
+            marbleList.append(Marble(float(marbleObj[0]), float(marbleObj[1]), int(marbleObj[2]), d))            
+        minmax_case.append(MinMax(x_min, x_max, y_min, y_max))
         marble_case.append(marbleList)
         
         
