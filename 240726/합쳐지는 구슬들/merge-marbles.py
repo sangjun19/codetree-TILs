@@ -10,12 +10,11 @@ def check_conflict(marbleList, n):
     for i in range(len(marbleList)):
         if marbleList[i].weight == 0: continue
         x, y = marbleList[i].x, marbleList[i].y
-        if marble_map[x][y] == 0:
-            marble_map[x][y] = i + 1
-        else:
+        
+        if marble_map[x][y] != 0:
             marbleList[i].weight += marbleList[marble_map[x][y] - 1].weight        
             marbleList[marble_map[x][y] - 1].weight = 0
-            marble_map[x][y] = i + 1
+        marble_map[x][y] = i + 1
             
     return marbleList
 
@@ -37,9 +36,9 @@ def move_marble(marbleList, n, time):
             x += dir[marble.dir][0]
             y += dir[marble.dir][1]
             if x < 0 or x >= n or y < 0 or y >= n:
-                x -= dir[marble.dir][0]
-                y -= dir[marble.dir][1]
                 marble.dir = (marble.dir + 2) % 4
+                x += dir[marble.dir][0]
+                y += dir[marble.dir][1]
             marble.x, marble.y = x, y
         marbleList = check_conflict(marbleList, n)
     print_result(marbleList)
