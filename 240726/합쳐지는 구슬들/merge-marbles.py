@@ -27,9 +27,9 @@ def print_result(marbleList):
             marble_count += 1
     print(marble_count, max_weight)
     
-        
+
 def move_marble(marbleList, n, time):
-    dir = [[0, -1], [-1, 0], [0, 1], [1, 0]]
+    dir = [[-1, 0], [0, -1], [1, 0], [0, 1]]
     for t in range(time):
         for marble in marbleList:
             x, y = marble.x, marble.y
