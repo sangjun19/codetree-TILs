@@ -16,7 +16,7 @@ def check_conflict(marbleList, n):
             marbleList[i].weight += marbleList[marble_map[x][y] - 1].weight        
             marbleList[marble_map[x][y] - 1].weight = 0
             marble_map[x][y] = i + 1
-                
+            
     return marbleList
 
 def print_result(marbleList):
