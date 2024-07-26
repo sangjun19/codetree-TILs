@@ -13,13 +13,10 @@ def check_conflict(marbleList, n):
         if marble_map[x][y] == 0:
             marble_map[x][y] = i + 1
         else:
-            if marbleList[marble_map[x][y] - 1].weight > marbleList[i].weight: # 원래 있던 구슬이 더 무겁거나 / 같은데 현재 번호가 더 낮은 경우
-                marbleList[marble_map[x][y] - 1].weight += marbleList[i].weight
-                marbleList[i].weight = 0
-            else: # 새로운 구슬이 더 무겁거나 / 같은데 현재 번호가 더 높은 경우
-                marbleList[i].weight += marbleList[marble_map[x][y] - 1].weight        
-                marbleList[marble_map[x][y] - 1].weight = 0
-                marble_map[x][y] = i + 1
+            marbleList[i].weight += marbleList[marble_map[x][y] - 1].weight        
+            marbleList[marble_map[x][y] - 1].weight = 0
+            marble_map[x][y] = i + 1
+                
     return marbleList
 
 def print_result(marbleList):
