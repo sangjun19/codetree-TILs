@@ -1,4 +1,4 @@
-num_max = 0
+num_max = float('-inf')
 
 def calculate(arr, num_dic, num_list):
     i = 0
