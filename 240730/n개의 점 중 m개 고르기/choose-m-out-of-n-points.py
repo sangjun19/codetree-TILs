@@ -2,7 +2,7 @@ result = float('inf')
 result2 = float('-inf')
 
 def calc_distance(y1, x1, y2, x2):
-    return abs(y1 - y2) + abs(x1 - x2)
+    return (y1 - y2)**2 + (x1 - x2)**2
 
 def choose_far(arr, m, picked):
     global result2
