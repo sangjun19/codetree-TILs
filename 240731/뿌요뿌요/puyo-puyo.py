@@ -29,7 +29,6 @@ def main():
                 continue
             bomb_size = 0
             find_bomb(arr, i, j)
-            print(bomb_size)
             if bomb_size >= 4:
                 bomb_cnt += 1
                 max_boom = max(max_boom, bomb_size)
