@@ -1,27 +1,25 @@
-result = []
+from collections import defaultdict
+cnt = 0
 
-def dfs(arr, visited, start, cnt):    
-    global result
-    cnt += 1
+def dfs(graph, visited, start):    
+    global cnt
     visited.append(start)
-    for i in range(len(arr)):
-        if arr[i][0] == start and arr[i][1] not in visited:
-            dfs(arr, visited, arr[i][1], cnt)
-            result.append(cnt)
-            visited.pop()
-        elif arr[i][1] == start and arr[i][0] not in visited:
-            dfs(arr, visited, arr[i][0], cnt)
-            result.append(cnt)
-            visited.pop()
-    return
+    if start not in graph:
+        return
+    for v in graph[start]:
+        if v not in visited:
+            cnt += 1
+            dfs(graph, visited, v)
 
 def main():
     n, m = map(int, input().split())
-    arr = []
+    graph = defaultdict(list) # 빈 리스트를 기본값으로 설정
     for _ in range(m):
-        arr.append(list(map(int, input().split())))
-    dfs(arr, [], 1, 0)
-    print(result[0])
+        v1, v2 = map(int, input().split())
+        graph[v1].append(v2)
+        graph[v2].append(v1)
+    dfs(graph, [], 1)
+    print(cnt)
     
 if __name__ == "__main__":
     main()
