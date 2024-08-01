@@ -1,9 +1,14 @@
 def main():
     a, b = map(int, input().split())
     for i in range(1, 10):
-        print(f"{a} * {i} = {a * i}", end='  ')
-        print(f"{b} * {i} = {b * i}", end='  ')
+        if a > b:
+            for j in range(a, b + 1):
+                print(f"{j} * {i} = {j * i}", end="    ")
+        else:
+            for j in range(a, b - 1, -1):
+                print(f"{j} * {i} = {j * i}", end="    ")
         print()
+        
 
 if __name__ == "__main__":
     main()
