@@ -1,7 +1,10 @@
 def fibo(n):
-    if n < 2:
-        return n
-    return fibo(n - 1) + fibo(n - 2)
+    sum = 0
+    arr = [0, 1, 1]        
+    for i in range(3, n + 1):
+        arr.append(arr[i - 1] + arr[i - 2])
+
+    return arr[n]
 
 def main():
     n = int(input())
