@@ -17,6 +17,9 @@ def rotting(mandarin):
                 if (ny, nx) in visited:
                     continue
                 
+                if value + 1 > result[ny][nx]:
+                    continue
+                
                 if mandarin[ny][nx] == 1:                
                     result[ny][nx] = min(result[ny][nx], value)
                     visited.append((ny, nx))
@@ -29,16 +32,14 @@ def rotting(mandarin):
             if mandarin[i][j] == 2:
                 cnt = []                
                 bfs()
-            
+
     for i in range(len(mandarin)):
         for j in range(len(mandarin)):
             if mandarin[i][j] == 1 and result[i][j] == float('inf'):
                 result[i][j] = -2
             elif mandarin[i][j] == 0:
                 result[i][j] = -1
-            elif mandarin[i][j] == 2 and result[i][j] == -1:
-                result[i][j] = 0
-            elif result[i][j] == float('inf'):
+            elif (mandarin[i][j] == 2 and result[i][j] == -1) or result[i][j] == float('inf'):
                 result[i][j] = 0
     
     for r in result:
