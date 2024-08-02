@@ -18,7 +18,7 @@ def main():
         temp[0] = 0
         arr.append(temp)
     back(arr, 0, 0, k)
-    print(result)
+    print(result % 10007)
 
 if __name__ == "__main__":
     main()
