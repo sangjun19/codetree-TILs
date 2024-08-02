@@ -8,6 +8,6 @@ elif arr[1] == '-':
 elif arr[1] == '*':
     result = x * y
 else:
-    result = x / y
+    result = int(x / y)
 
 print(f'{x} {arr[1]} {y} = {result}')
