@@ -15,7 +15,6 @@ def bfs(arr, y, x):
     gravity_list = []
     gravity_dir = 1
     gravity_cnt = 0
-    gravity_change = 0
     
     y = gravity(arr, y, x, gravity_dir)
     if y == -1:
@@ -30,6 +29,7 @@ def bfs(arr, y, x):
         for dy, dx in [[0, 1], [0, -1], [0, 0]]:
             ny = y + dy
             nx = x + dx
+            gravity_change = gravity_cnt
             if dy == 0 and dx == 0:
                 gravity_dir *= -1
                 gravity_change = gravity_cnt + 1
@@ -40,14 +40,14 @@ def bfs(arr, y, x):
             if arr[ny][nx] == 1:
                 continue
             
-            ny = gravity(arr, ny, nx, gravity_dir)
+            ny = gravity(arr, ny, nx, gravity_dir)            
             if ny == -1:
                 continue
             if (ny, nx) in visited:
                 continue
             
             if arr[ny][nx] == 3:
-                return gravity_cnt
+                return gravity_change
             
             queue.append((ny, nx))
             gravity_list.append((gravity_dir, gravity_change))
