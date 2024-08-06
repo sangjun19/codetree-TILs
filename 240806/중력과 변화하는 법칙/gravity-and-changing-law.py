@@ -17,7 +17,7 @@ def bfs(arr, y, x):
     gravity_dir = -1
     if y == 0:
         gravity_dir = 1
-    if y < len(arr) - 1:
+    elif y < len(arr) - 1:
         if arr[y + 1][x] == 1:
             gravity_dir = 1        
     gravity_cnt = 0
