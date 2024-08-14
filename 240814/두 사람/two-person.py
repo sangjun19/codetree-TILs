@@ -5,3 +5,5 @@ age2 = int(age2)
 
 if (age1 > 18 and gen1 == 'M') or (age2 > 18 and gen2 == 'M'):
     print(1)
+else:
+    print(0)
