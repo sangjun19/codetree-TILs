@@ -22,12 +22,17 @@ def main():
                 minNum2, maxNum2 = min(minNum2, arr[i][j]), max(maxNum2, arr[i][j])
                 dif2 = maxNum2 - minNum2
             
-            if dif1 < dif2:
+            if dif1 <= dif2:
                 result[i][j] = (minNum1, maxNum1)
             else:
                 result[i][j] = (minNum2, maxNum2)
+                
+            # print(minNum1, maxNum1, minNum2, maxNum2)
+                
+            # print()
+            # for r in result:
+            #     print(*r)   
             
-    answer = float('inf')
     minNum, maxNum = result[n - 1][n - 1]
     print(maxNum - minNum)
     
