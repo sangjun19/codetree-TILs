@@ -9,7 +9,7 @@ def main():
         for j in range(0, i):
             px1, px2 = arr[j]
             x1, x2 = arr[i]
-            if x1 > px2:
+            if x1 > px2 or x2 < px1:
                 dp[i] += 1
     print(max(dp))
             
