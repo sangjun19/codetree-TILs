@@ -8,8 +8,9 @@ def main():
     for i in range(1, n):
         dp[i] = arr[i][2]
         for j in range(0, i):
-            if arr[j][0] > arr[i][1]:
+            if arr[j][1] < arr[i][0]:
                 dp[i] = max(dp[i], dp[j] + arr[i][2])
+    # print(*dp)
     print(max(dp))
     
 if __name__ == "__main__":
