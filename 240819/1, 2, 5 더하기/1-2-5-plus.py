@@ -8,7 +8,7 @@ def main():
                 dp[i] += dp[i - a]
             if i - a == 0:
                 dp[i] += 1
-    print(dp[n])
+    print(dp[n] % 1000000007)
 
 if __name__ == "__main__":
     main()
