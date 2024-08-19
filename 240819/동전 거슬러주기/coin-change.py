@@ -11,7 +11,7 @@ def main():
     if dp[m] == float('inf'):
         print(-1)
         exit()
-    print()
+    print(dp[m])
     
 if __name__ == "__main__":
     main()
