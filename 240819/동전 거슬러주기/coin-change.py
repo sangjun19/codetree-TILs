@@ -8,7 +8,10 @@ def main():
             if i - coin >= 0:
                 dp[i] = min(dp[i - coin] + 1, dp[i])
     # print(dp)
-    print(dp[m])
+    if min(dp[m], -1) == float('inf'):
+        print(-1)
+        exit()
+    print()
     
 if __name__ == "__main__":
     main()
