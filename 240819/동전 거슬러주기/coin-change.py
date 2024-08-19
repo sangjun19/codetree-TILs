@@ -7,6 +7,8 @@ def main():
         for coin in arr:
             if i - coin >= 0:
                 dp[i] = min(dp[i - coin] + 1, dp[i])
-    print(max(dp))
+    # print(dp)
+    print(dp[m])
+    
 if __name__ == "__main__":
     main()
