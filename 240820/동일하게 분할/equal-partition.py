@@ -2,7 +2,6 @@ def main():
     n = int(input())
     arr = list(map(int, input().split()))
     ans = sum(arr)
-    arr.sort()
     for i in range(n):
         result = 0
         for j in range(i, n):
