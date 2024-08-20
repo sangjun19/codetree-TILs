@@ -8,9 +8,9 @@ def main():
         for j in range(i, n):
             result += arr[j]
             if ans - result == result:
-                print("YES")
+                print("Yes")
                 exit()        
-    print("NO")
+    print("No")
             
     
 if __name__ == "__main__":
