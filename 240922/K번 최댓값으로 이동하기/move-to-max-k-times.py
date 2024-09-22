@@ -17,15 +17,15 @@ def main():
         while q:
             y, x = q.pop(0)     
             # print(y, x)       
-            if arr[y][x] >= max_num and arr[y][x] < num:
-                max_num = arr[y][x]                
+            if arr[y][x] >= max_num and arr[y][x] < num:                
                 if max_num == arr[y][x]:
-                    if y > r:
+                    if y < r:
                         r, c = y, x
-                    elif x > c and y == r:
+                    elif x < c and y == r:
                         r, c = y, x
                 else:
                     r, c = y, x
+                max_num = arr[y][x]
                 
             for dy, dx in ((1, 0), (0, 1), (-1, 0), (0, -1)):
                 ny, nx = y + dy, x + dx
