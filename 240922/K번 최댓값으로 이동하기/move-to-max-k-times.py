@@ -19,9 +19,9 @@ def main():
             # print(y, x)       
             if arr[y][x] >= max_num and arr[y][x] < num:
                 max_num = arr[y][x]                
-                if max_num == num:
+                if max_num == arr[y][x]:
                     if y > r:
-                        r, c = y, x                
+                        r, c = y, x
                     elif x > c and y == r:
                         r, c = y, x
                 else:
