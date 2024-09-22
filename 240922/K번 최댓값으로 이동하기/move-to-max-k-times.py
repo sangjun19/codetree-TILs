@@ -11,26 +11,29 @@ def main():
         num = arr[r][c]
         q = []
         visited = []
-        max_num = 0
-        ci, cx = 0, 0
-        for i in range(n):
-            for j in range(n):
-                if max_num < arr[i][j] and arr[i][j] < num:
-                    max_num = arr[i][j]
-                    ci, cx = i, j
         q.append((r, c))
         visited.append((r, c))
+        max_num = 0
         while q:
-            y, x = q.pop(0)
-            if (y, x) == (ci, cx):
-                break
+            y, x = q.pop(0)     
+            # print(y, x)       
+            if arr[y][x] >= max_num and arr[y][x] < num:
+                max_num = arr[y][x]                
+                if max_num == num:
+                    if y > r:
+                        r, c = y, x                
+                    elif x > c and y == r:
+                        r, c = y, x
+                else:
+                    r, c = y, x
+                
             for dy, dx in ((1, 0), (0, 1), (-1, 0), (0, -1)):
                 ny, nx = y + dy, x + dx
-                if 0 <= ny < n and 0 <= nx < n and (ny, nx) not in visited:
+                if 0 <= ny < n and 0 <= nx < n and (ny, nx) not in visited and arr[ny][nx] < num:
                     q.append((ny, nx))
                     visited.append((ny, nx))
-        r, c = y, x
-    print(r, c)
+                            
+    print(r + 1, c + 1)
         
 
 if __name__ == "__main__":
