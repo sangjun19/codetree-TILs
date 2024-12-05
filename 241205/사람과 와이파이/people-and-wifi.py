@@ -1,6 +1,7 @@
 n, k = map(int, input().split())
 people = set(map(int, input().split()))
 people = list(people)
+people.sort()
 total = 0
 dif = []
 for i in range(len(people) - 1):
