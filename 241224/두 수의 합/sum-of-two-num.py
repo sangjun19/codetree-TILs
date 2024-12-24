@@ -14,7 +14,6 @@ for key, value in d.items():
         dif = k - key
         if dif in d:
             cnt += d[key]
-        if dif == key:
             cnt -= 1
 
 print(cnt//2)
