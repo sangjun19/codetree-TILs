@@ -10,11 +10,10 @@ for n in arr:
 
 cnt = 0;
 for key, value in d.items():
-    for i in range(value):
-        dif = k - key
-        if dif in d:
-            cnt += d[key]
-            if dif == key:
-                cnt -= 1
+    dif = k - key
+    if dif == key:
+        cnt += value * (value - 1)
+    else:
+        cnt += value * d[dif]
 
 print(cnt//2)
