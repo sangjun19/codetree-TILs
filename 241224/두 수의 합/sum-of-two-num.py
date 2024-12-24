@@ -11,6 +11,8 @@ for n in arr:
 cnt = 0;
 for key, value in d.items():
     dif = k - key
+    if dif not in d:
+        continue
     if dif == key:
         cnt += value * (value - 1)
     else:
