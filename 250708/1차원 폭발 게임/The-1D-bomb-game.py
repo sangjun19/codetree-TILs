@@ -30,7 +30,6 @@ while True:
 
 ans = []
 for v, c in stack:
-    if c > 1: continue
     ans.extend([v] * c)
 
 print(len(ans))
