@@ -3,23 +3,36 @@ numbers = [int(input()) for _ in range(n)]
 
 # Please write your code here.
 
-flag = False
-
 while True:
-    i = 0
     flag = True
-    while i < len(numbers):
-        j = i + 1
-        while j < len(numbers) and numbers[j] == numbers[i]:
-            j += 1               # [i, j) 가 같은 숫자 구간
-        if j - i >= m:           # m개 이상이면
-            del numbers[i:j]
-            flag = False
-            break                # 삭제했으니 처음부터 재검사
-        i = j                    # 아니면 다음 구간으로
+    stack = []
+    for x in numbers:
+        if stack and stack[-1][0] == x:
+            v, c = stack.pop()
+            stack.append((v, c + 1))
+            # flag = False
+        else:
+            if stack and stack[-1][1] >= m:
+                stack.pop()
+                flag = False
+
+            stack.append((x, 1))
+    
+    if stack[-1][1] >= m:
+        stack.pop()
     if flag:
         break
+    numbers = []
+    for v, c in stack:
+        numbers.append(v)
 
-print(len(numbers))
-for n in numbers:
-    print(n)
+    
+
+ans = []
+for v, c in stack:
+    if c > 1: continue
+    ans.extend([v] * c)
+
+print(len(ans))
+for a in ans:
+    print(a)
