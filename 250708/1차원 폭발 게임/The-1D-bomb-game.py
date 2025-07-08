@@ -18,7 +18,7 @@ while True:
 
             stack.append((x, 1))
     
-    if stack[-1][1] >= m:
+    if stack and stack[-1][1] >= m:
         stack.pop()
     if flag:
         break
