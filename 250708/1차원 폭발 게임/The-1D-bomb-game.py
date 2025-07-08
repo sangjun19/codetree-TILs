@@ -6,25 +6,19 @@ numbers = [int(input()) for _ in range(n)]
 flag = False
 
 while True:
-    cnt = 1
+    i = 0
     flag = True
-    for i in range(0, len(numbers) - 1):
-        if numbers[i] == numbers[i + 1]:
-            cnt += 1
-
-        if numbers[i] != numbers[i + 1]:
-            if cnt >= m:
-                del numbers[i - cnt + 1 : i + 1]
-                # print(numbers)
-                cnt = 1
-                flag = False
-                break
-            cnt = 1
-
-    if cnt >= m:
-        del numbers[len(numbers) - cnt : len(numbers)]
-
-    if flag: break
+    while i < len(numbers):
+        j = i + 1
+        while j < len(numbers) and numbers[j] == numbers[i]:
+            j += 1               # [i, j) 가 같은 숫자 구간
+        if j - i >= m:           # m개 이상이면
+            del numbers[i:j]
+            flag = False
+            break                # 삭제했으니 처음부터 재검사
+        i = j                    # 아니면 다음 구간으로
+    if flag:
+        break
 
 print(len(numbers))
 for n in numbers:
