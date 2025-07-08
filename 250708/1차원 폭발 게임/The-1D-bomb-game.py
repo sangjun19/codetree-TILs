@@ -12,12 +12,14 @@ while True:
         if numbers[i] == numbers[i + 1]:
             cnt += 1
 
-        if cnt >= m and (numbers[i] != numbers[i + 1]):
-            del numbers[i - cnt + 1 : i + 1]
-            # print(numbers)
+        if numbers[i] != numbers[i + 1]:
+            if cnt >= m:
+                del numbers[i - cnt + 1 : i + 1]
+                # print(numbers)
+                cnt = 1
+                flag = False
+                break
             cnt = 1
-            flag = False
-            break
 
     if cnt >= m:
         del numbers[len(numbers) - cnt : len(numbers)]
