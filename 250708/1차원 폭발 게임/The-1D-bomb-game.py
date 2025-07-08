@@ -17,6 +17,7 @@ while True:
                 flag = False
 
             stack.append((x, 1))
+        # print(stack)
     
     if stack and stack[-1][1] >= m:
         stack.pop()
@@ -24,10 +25,10 @@ while True:
         break
     numbers = []
     for v, c in stack:
-        numbers.append(v)
+        numbers.extend([v] * c)
 
     
-
+# print(stack)
 ans = []
 for v, c in stack:
     ans.extend([v] * c)
