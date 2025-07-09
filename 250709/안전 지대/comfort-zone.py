@@ -28,7 +28,7 @@ min_k = min(min(row) for row in grid)
 max_k = max(max(row) for row in grid)
 result = [0] * max_k
 
-for l in range(min_k, max_k):
+for l in range(1, max_k):
     visited = []
     cnt = 0
     for i in range(n):
