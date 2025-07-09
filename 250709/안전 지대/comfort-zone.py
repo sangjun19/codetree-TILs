@@ -27,6 +27,7 @@ def dfs(y, x, visited, k):
 min_k = min(min(row) for row in grid)
 max_k = max(max(row) for row in grid)
 result = [0] * max_k
+result[0] = -1
 
 for l in range(min_k, max_k):
     visited = []
@@ -39,7 +40,6 @@ for l in range(min_k, max_k):
                 dfs(i, j, visited, l)
     result[l] = cnt
 
-result.pop(0)
 max_k = max(result)
 print(result.index(max_k), max_k)
 
