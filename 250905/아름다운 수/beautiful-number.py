@@ -24,7 +24,7 @@ def back(arr, dep):
             result += 1
         return
 
-    for i in range(1, 4):
+    for i in range(1, 5):
         arr.append(i)
         back(arr, dep+1)
         arr.pop()
